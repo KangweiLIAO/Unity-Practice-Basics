@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf3c9a9d16f646f48856f537ca9d31bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointPrefab: {fileID: 0}
-  resolution: 50
+  resolution: 500
   functionDuration: 1
   transitionDuration: 1
+  computeShader: {fileID: 0}
+  material: {fileID: 0}
+  mesh: {fileID: 0}
   wave: 0

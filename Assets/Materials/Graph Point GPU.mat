@@ -7,8 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Graph Point
-  m_Shader: {fileID: 4800000, guid: 61dbc065c8d9b184e8d1e9a23297e732, type: 3}
+  m_Name: Graph Point GPU
+  m_Shader: {fileID: -6465566751694194690, guid: ff1aa3bb2bc436d4e943e41405b1ea46,
+    type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -90,10 +91,11 @@ Material:
     - _Dissolve_Thickness: 0.05
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+    - _Fresnel_Power: 3
     - _GlossMapScale: 0
     - _Glossiness: 0.497
     - _GlossyReflections: 0
-    - _Metallic: 0.492
+    - _Metallic: 0
     - _Noise_Size: 3.6
     - _OcclusionStrength: 1
     - _Parallax: 0.005

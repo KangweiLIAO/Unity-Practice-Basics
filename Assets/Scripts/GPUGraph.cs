@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GPUGraph : MonoBehaviour
 {
-    [SerializeField, Range(10, 200)]
+    [SerializeField, Range(10, 1000)]
     int resolution = 50;
 
     [SerializeField, Min(0f)]
@@ -38,41 +38,10 @@ public class GPUGraph : MonoBehaviour
         positionsBuffer = new ComputeBuffer(resolution * resolution, 3 * 4); // the element size is 3 * 4 bytes
     }
 
-    // Awake is called when the script's first loaded
-    void Awake()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
-        duration += Time.deltaTime;  // deltaTime = the time last framed used
-
-        if (transitioning)
-        {
-            if (duration >= transitionDuration)
-            {
-                duration -= transitionDuration;
-                transitioning = false;
-            }
-        }
-        else if (duration >= functionDuration)
-        {
-            duration -= functionDuration;
-            transitioning = true;
-            transitionFunction = wave;
-            wave = WaveFunctionLibrary.GetNextWave(wave);
-        }
         UpdateFunctionOnGPU();
-    }
-
-    // OnDisable is called once the game object bind with this script been disabled
-    void OnDisable()
-    {
-        positionsBuffer.Release(); // let the GPU memory claimed by the buffer can be freed immediately
-        // if our graph gets disabled or destroyed while in play mode:
-        positionsBuffer = null; // makes it possible for the object to be reclaimed by memory GC process the next time it runs
     }
 
     /// <summary>
@@ -91,5 +60,14 @@ public class GPUGraph : MonoBehaviour
         var bounds = new Bounds(Vector3.zero, Vector3.one * 2f); // our bound of the graph is a 2x2 cube bound which center is the world origin
         // var bounds = new Bounds(Vector3.zero, Vector3.one * (2f + 2f / resolution)); // since our points also have a size, need to increase the bound
         Graphics.DrawMeshInstancedProcedural(mesh, 0, material, bounds, positionsBuffer.count); // procedural drawing
+    }
+
+
+    // OnDisable is called once the game object bind with this script been disabled
+    void OnDisable()
+    {
+        positionsBuffer.Release(); // let the GPU memory claimed by the buffer can be freed immediately
+        // if our graph gets disabled or destroyed while in play mode:
+        positionsBuffer = null; // makes it possible for the object to be reclaimed by memory GC process the next time it runs
     }
 }

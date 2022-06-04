@@ -1199,7 +1199,7 @@
     "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
     "m_ObjectId": "db91d552c8bf49f2b2f1027be4e44664",
     "m_Title": "Why saturate?",
-    "m_Content": "What's the different without satuate?",
+    "m_Content": "Clamp the value in [0, 1]",
     "m_TextSize": 0,
     "m_Theme": 0,
     "m_Position": {
