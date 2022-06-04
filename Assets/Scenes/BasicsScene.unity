@@ -816,6 +816,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GPU Graph Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 9188308499503340529, guid: 2f220290b7b7a0048abf640ddbe8223c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9188308499503340531, guid: 2f220290b7b7a0048abf640ddbe8223c,
         type: 3}
       propertyPath: m_RootOrder

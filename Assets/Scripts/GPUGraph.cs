@@ -51,6 +51,9 @@ public class GPUGraph : MonoBehaviour
         int groups = Mathf.CeilToInt(resolution / 8f); // since we have 8x8 group size, the amount of groups we need in the X and Y dimensions is equal to the resolution divided by eight
         computeShader.Dispatch(0, groups, groups, 1); // runs the kernel
 
+        material.SetBuffer(positionsId, positionsBuffer);
+        material.SetFloat(stepId, step);
+
         var bounds = new Bounds(Vector3.zero, Vector3.one * 2f); // our bound of the graph is a 2x2 cube bound which center is the world origin
         // var bounds = new Bounds(Vector3.zero, Vector3.one * (2f + 2f / resolution)); // since our points also have a size, need to increase the bound
         Graphics.DrawMeshInstancedProcedural(mesh, 0, material, bounds, resolution * resolution); // procedural drawing
