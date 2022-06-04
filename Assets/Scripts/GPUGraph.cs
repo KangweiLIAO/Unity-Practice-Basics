@@ -54,9 +54,9 @@ public class GPUGraph : MonoBehaviour
         material.SetBuffer(positionsId, positionsBuffer);
         material.SetFloat(stepId, step);
 
-        var bounds = new Bounds(Vector3.zero, Vector3.one * 2f); // our bound of the graph is a 2x2 cube bound which center is the world origin
-        // var bounds = new Bounds(Vector3.zero, Vector3.one * (2f + 2f / resolution)); // since our points also have a size, need to increase the bound
-        Graphics.DrawMeshInstancedProcedural(mesh, 0, material, bounds, resolution * resolution); // procedural drawing
+        // var bounds = new Bounds(Vector3.zero, Vector3.one * 2f); // our bound of the graph is a 2x2 cube bound which center is the world origin
+        var bounds = new Bounds(Vector3.zero, Vector3.one * (2f + 2f / resolution)); // since our points also have a size, need to increase the bound
+        Graphics.DrawMeshInstancedProcedural(mesh, 0, material, bounds, positionsBuffer.count); // procedural drawing
     }
 
 
