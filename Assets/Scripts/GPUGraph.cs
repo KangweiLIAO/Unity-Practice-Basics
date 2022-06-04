@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class GPUGraph : MonoBehaviour
 {
-    [SerializeField, Range(10, 1000)]
-    int resolution = 50;
+    const int maxResolution = 1000;
 
-    [SerializeField, Min(0f)]
-    float functionDuration = 1f, transitionDuration = 1f;
+    [SerializeField, Range(10, maxResolution)]
+    int resolution = 50;
 
     [SerializeField]
     ComputeShader computeShader;
@@ -17,11 +16,6 @@ public class GPUGraph : MonoBehaviour
     [SerializeField]
     Mesh mesh;
 
-    public WaveFunctionLibrary.WaveType wave = WaveFunctionLibrary.WaveType.SineWave;
-
-    float duration; // record the time lapsed for a wave function
-    private bool transitioning;
-    WaveFunctionLibrary.WaveType transitionFunction;
     ComputeBuffer positionsBuffer; // used to store positions in GPU
 
     // obtains identifiers that Unity uses for the properties in computeShader:
@@ -35,7 +29,7 @@ public class GPUGraph : MonoBehaviour
     void OnEnable()
     { // hot reload compatibility
         // use compute buffer to store 3D position vectors, which consist of 3 float numbers:
-        positionsBuffer = new ComputeBuffer(resolution * resolution, 3 * 4); // the element size is 3 * 4 bytes
+        positionsBuffer = new ComputeBuffer(maxResolution * maxResolution, 3 * 4); // the element size is 3 * 4 bytes
     }
 
     // Update is called once per frame
@@ -59,7 +53,7 @@ public class GPUGraph : MonoBehaviour
 
         var bounds = new Bounds(Vector3.zero, Vector3.one * 2f); // our bound of the graph is a 2x2 cube bound which center is the world origin
         // var bounds = new Bounds(Vector3.zero, Vector3.one * (2f + 2f / resolution)); // since our points also have a size, need to increase the bound
-        Graphics.DrawMeshInstancedProcedural(mesh, 0, material, bounds, positionsBuffer.count); // procedural drawing
+        Graphics.DrawMeshInstancedProcedural(mesh, 0, material, bounds, resolution * resolution); // procedural drawing
     }
 
 
