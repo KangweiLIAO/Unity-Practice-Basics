@@ -538,6 +538,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base Fractal
       objectReference: {fileID: 0}
+    - target: {fileID: 7678766364337305756, guid: 994f210aca1ee87448ad56d61beae9bb,
+        type: 3}
+      propertyPath: depth
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 994f210aca1ee87448ad56d61beae9bb, type: 3}
 --- !u!1 &796084316

@@ -27,7 +27,7 @@ public class Fractal : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
+        transform.Rotate(0f, 22.5f * Time.deltaTime, 0f);
     }
 
     Fractal CreateChild(Vector3 direction, Quaternion rotation) {
